@@ -1,24 +1,32 @@
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import TopRatedPage from './pages/TopRatedPage'
-import UpcomingPage from './pages/UpcomingPage'
-import SingleMoviePage from './pages/SingleMoviePage'
-import SearchPage from './pages/SearchPage'
+// src/App.js
 
-import './App.css'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Navbar from './components/Navbar'
+import MovieGrid from './components/MovieGrid'
+import MovieDetailsPage from './pages/MovieDetailsPage'
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/top-rated" component={TopRatedPage} />
-          <Route exact path="/upcoming" component={UpcomingPage} />
-          <Route exact path="/movie/:id" component={SingleMoviePage} />
-          <Route exact path="/search" component={SearchPage} />
-        </Switch>
-      </div>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" render={() => <MovieGrid category="popular" />} />
+        <Route
+          path="/top-rated"
+          render={() => <MovieGrid category="top-rated" />}
+        />
+        <Route
+          path="/upcoming"
+          render={() => <MovieGrid category="upcoming" />}
+        />
+        <Route
+          path="/search/:query"
+          render={({match}) => (
+            <MovieGrid category="search" searchQuery={match.params.query} />
+          )}
+        />
+        <Route path="/MovieDetailsPage/:id" component={MovieDetailsPage} />
+      </Switch>
     </Router>
   )
 }
