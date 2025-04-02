@@ -1,6 +1,4 @@
-// src/services/api.js
-
-const API_KEY = '744baf66a0b8b385b30b023362d286aa' // Replace with your actual API key
+const API_KEY = '744baf66a0b8b385b30b023362d286aa'
 const BASE_URL = 'https://api.themoviedb.org/3'
 
 const fetchMovies = (url, params = {}) =>

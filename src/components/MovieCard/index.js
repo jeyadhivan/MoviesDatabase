@@ -11,7 +11,7 @@ function MovieCard({movie}) {
         className="movie-poster"
       />
       <h3>{movie.title}</h3>
-      <p>{movie.vote_average}</p>
+      <p>Rating: {movie.vote_average}</p>
       <Link to={`/MovieDetailsPage/${movie.id}`}>
         <button type="button">View Details</button>
       </Link>

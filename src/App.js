@@ -1,5 +1,3 @@
-// src/App.js
-
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import MovieGrid from './components/MovieGrid'
